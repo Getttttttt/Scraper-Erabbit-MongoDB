@@ -20,10 +20,8 @@ class Scraper:
 
         while len(links) < max_links:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(0.5)
+            time.sleep(2)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
-            if new_height == last_height:
-                break
             last_height = new_height
             html = self.driver.page_source
             soup = BeautifulSoup(html, 'html.parser')
